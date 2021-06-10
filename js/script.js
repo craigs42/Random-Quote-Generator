@@ -42,18 +42,24 @@ const quotes = [
 
 /***
  * `getRandomQuote` function
+ * Returns a random quote. Random number based on length of quotes array
 ***/
 function getRandomQuote(){
   return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
+/***
+ * `getRandomNum256` function
+ * returns a number 0-255
+ ***/
 function getRandomNum256(){
   return Math.floor(Math.random() * 256);
-  
 }
 
 /***
  * `printQuote` function
+ * Calls for a new color with each new call to printQuote
+ * Checks each property to see if it has a value before adding it to the string
 ***/
 function printQuote(){
   const body = document.querySelector('body');

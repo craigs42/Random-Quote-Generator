@@ -17,8 +17,8 @@ const quotes = [
     tags: ''
   },
   {
-    quote : 'Never go full ret*rd.',
-    source: 'Robert Downey Jr.',
+    quote : 'Never go full rambo.',
+    source: 'Roberto Downey Jr.',
     citation: 'Tropic Thunder',
     year: '2008',
     tags: 'Movie'

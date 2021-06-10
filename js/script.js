@@ -3,39 +3,39 @@
 ***/
 const quotes = [
   {
-    quote : 'hi',
-    source: 'unknown',
-    citation: 'unknown',
-    year: '1975',
-    tags: 'rock'
+    quote : 'To the moon!',
+    source: 'Original Author Cannot Be Identified',
+    citation: 'Reddit',
+    year: '2021',
+    tags: ''
   },
   {
-    quote : 'hi',
-    source: 'unknown',
-    citation: 'unknown',
-    year: '1975',
-    tags: 'rock'
+    quote : 'A long long time ago, I can still remember how that music, used to make me smile...',
+    source: 'Don Mclean',
+    citation: 'American Pie',
+    year: '1971',
+    tags: ''
   },
   {
-    quote : 'hi',
-    source: 'unknown',
-    citation: 'unknown',
-    year: '1975',
-    tags: 'rock'
+    quote : 'Never go full ret*rd.',
+    source: 'Robert Downey Jr.',
+    citation: 'Tropic Thunder',
+    year: '2008',
+    tags: 'Movie'
   },
   {
-    quote : 'hi',
-    source: 'unknown',
-    citation: 'unknown',
-    year: '1975',
-    tags: 'rock'
+    quote : 'ENGLISH MUTHA***A, DO YOU SPEAK IT?',
+    source: 'Samuel L. Jackson',
+    citation: 'Pulp Fiction',
+    year: '1994',
+    tags: 'Movie'
   },
   {
-    quote : 'hi',
-    source: 'unknown',
-    citation: 'unknown',
-    year: '1975',
-    tags: 'rock'
+    quote : `If I were a rich man, daidle deedle daidle daidle daidle deedle daidle dum, All day long I'd biddy-biddy-bum...`,
+    source: 'Tevye',
+    citation: 'Fiddler on the Roof',
+    year: '1971',
+    tags: 'Musical'
   }
 ];
 
@@ -47,10 +47,9 @@ function getRandomQuote(){
   return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
-function getRandomNum255(){
-  const num = Math.floor(Math.random() * 255);
-  console.log(num);
-  return num;
+function getRandomNum256(){
+  return Math.floor(Math.random() * 256);
+  
 }
 
 /***
@@ -58,18 +57,20 @@ function getRandomNum255(){
 ***/
 function printQuote(){
   const body = document.querySelector('body');
-  body.style.backgroundColor = `rgb(${getRandomNum255()},${getRandomNum255()},${getRandomNum255()})`;
+  body.style.backgroundColor = `rgb(${getRandomNum256()},${getRandomNum256()},${getRandomNum256()})`;
   const objQuote = getRandomQuote();
-  if(objQuote.quote!==undefined) document.querySelector('.quote').textContent = objQuote.quote;
-  if(objQuote.source!==undefined) document.querySelector('.source').textContent = objQuote.source;
-  if(objQuote.year!==undefined) document.querySelector('.year').textContent = objQuote.year;
-  if(objQuote.citation!==undefined) document.querySelector('.citation').textContent = objQuote.citation;
-  if(objQuote.tags!==undefined) document.querySelector('.tags').textContent= objQuote.tags;
-}
+  let citationString = ``;
+  if(objQuote.quote) document.querySelector('.quote').textContent = objQuote.quote;
+  if(objQuote.source) citationString += `${objQuote.source} `;
+  if(objQuote.citation) citationString +=`<span class='citation'>${objQuote.citation}</span> `;
+  if(objQuote.year) citationString +=`<span class='year'>${objQuote.year}</span> `;
+  if(objQuote.tags) citationString +=objQuote.tags;
+  document.querySelector('.source').innerHTML = citationString;
+  }
 
 
 /***
  * click event listener for the print quote button
 ***/
-
+setInterval(printQuote, 7000);
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
